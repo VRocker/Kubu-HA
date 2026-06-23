@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Kubu",
+        "description": "Enter your Kubu account credentials.",
+        "data": {
+          "email": "Email address",
+          "password": "Password",
+          "scan_interval_seconds": "API refresh interval (seconds)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnect Kubu",
+        "description": "Your Kubu credentials are no longer valid. Enter updated credentials.",
+        "data": {
+          "email": "Email address",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid email address or password.",
+      "cannot_connect": "Unable to connect to the Kubu service."
+    },
+    "abort": {
+      "already_configured": "This Kubu account is already configured.",
+      "reauth_successful": "Kubu credentials updated successfully."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "is_open": {
+        "name": "Open"
+      },
+      "is_locked": {
+        "name": "Locked"
+      }
+    },
+    "sensor": {
+      "battery": {
+        "name": "Battery"
+      }
+    }
+  }
+}

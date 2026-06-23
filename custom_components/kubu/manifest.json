@@ -1,0 +1,21 @@
+{
+  "domain": "kubu",
+  "name": "Kubu",
+  "version": "0.2.0",
+  "config_flow": true,
+  "iot_class": "cloud_polling",
+  "bluetooth": [
+    {}
+  ],
+  "dependencies": [
+    "bluetooth"
+  ],
+  "requirements": [
+    "cryptography>=42.0.0"
+  ],
+  "documentation": "https://github.com/VRocker/Kubu-HA",
+  "issue_tracker": "https://github.com/VRocker/Kubu-HA/issues",
+  "codeowners": [
+    "@vrocker"
+  ]
+}
