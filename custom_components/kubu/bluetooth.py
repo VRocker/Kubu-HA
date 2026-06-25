@@ -16,13 +16,11 @@ from homeassistant.components.bluetooth import (
 )
 from homeassistant.core import HomeAssistant, callback
 
-from custom_components.integration_blueprint.const import LOGGER
-
 from .coordinator import KubuCoordinator
 
 _tilt_movable_map: dict[str, bool] = {}
 
-_LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
 
 @dataclass(slots=True)
@@ -45,8 +43,7 @@ class KubuBluetoothManager:
 
     def start(self) -> None:
         """Start passive BLE scanning callback."""
-
-        LOGGER.info("Starting BLE advertisement callback for Kubu devices")
+        LOGGER.debug("Starting BLE advertisement callback for Kubu devices")
 
         @callback
         def _on_advertisement(
@@ -104,7 +101,7 @@ def decrypt_advertisement(
     if not plaintext:
         return None
 
-    LOGGER.info("Decrypted BLE payload: %s", plaintext.hex())
+    LOGGER.debug("Decrypted BLE payload: %s", plaintext.hex())
 
     parsed = _parse_payload(plaintext, sensor_type, node_id)
     if parsed is None:

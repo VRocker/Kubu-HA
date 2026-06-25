@@ -4,16 +4,14 @@ from __future__ import annotations
 
 import json
 import logging
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
-from typing import Any, Callable
+from typing import Any
 
 from aiohttp import ClientError, ClientResponseError, ClientSession
-from bleak import _logger
 
-from custom_components.integration_blueprint.const import LOGGER
-
-_LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
 
 class KubuAuthError(Exception):
@@ -100,8 +98,6 @@ class KubuApiClient:
 
         data = self._parse_json(body)
 
-        LOGGER.info("Login response: %s", data)
-
         name = data.get("name")
         if isinstance(name, str) and name:
             self._name = name
@@ -122,8 +118,7 @@ class KubuApiClient:
 
     async def async_get_ble_nodes(self) -> list[KubuBleNode]:
         """Fetch BLE nodes from the API."""
-
-        LOGGER.info("Fetching BLE nodes from Kubu API")
+        LOGGER.debug("Fetching BLE nodes from Kubu API")
         data = await self._async_request(
             "GET",
             "/view/rooms",
@@ -134,7 +129,7 @@ class KubuApiClient:
         if not isinstance(candidates, list):
             raise KubuApiError("device list response was not a list")
 
-        LOGGER.info("Found %d BLE nodes in API response", len(candidates))
+        LOGGER.debug("Found %d BLE nodes in API response", len(candidates))
 
         nodes: list[KubuBleNode] = []
         for item in candidates:
@@ -144,7 +139,6 @@ class KubuApiClient:
             if normalized is not None:
                 nodes.append(normalized)
 
-        LOGGER.info("Normalized %d BLE nodes", len(nodes))
         return nodes
 
     async def _async_request(
@@ -218,7 +212,6 @@ class KubuApiClient:
         return datetime.now(tz=UTC) >= expires_at
 
     def _normalize_node(self, payload: dict[str, Any]) -> KubuBleNode | None:
-        LOGGER.info("Normalizing node payload: %s", payload)
         node_name_raw = payload.get("name")
         if not isinstance(node_name_raw, (str, int)):
             return None
@@ -253,7 +246,7 @@ class KubuApiClient:
             payload.get("fwVer") if isinstance(payload.get("fwVer"), str) else None
         )
 
-        LOGGER.info(
+        LOGGER.debug(
             "Normalized node: id=%s, name=%s, serial=%s, entity=%s, type=%s, mac=%s",
             node_id,
             name,
