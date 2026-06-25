@@ -14,10 +14,10 @@ from .api import KubuApiClient
 from .bluetooth import KubuBluetoothManager
 from .const import (
     CONF_ACCESS_TOKEN,
-    CONF_REFRESH_TOKEN,
-    CONF_TOKEN_TYPE,
     CONF_API_BASE_URL,
+    CONF_REFRESH_TOKEN,
     CONF_TOKEN_EXPIRES_AT,
+    CONF_TOKEN_TYPE,
     DEFAULT_API_BASE_URL,
     PLATFORMS,
 )
