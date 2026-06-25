@@ -43,7 +43,6 @@ class KubuBluetoothManager:
 
     def start(self) -> None:
         """Start passive BLE scanning callback."""
-
         LOGGER.info("Starting BLE advertisement callback for Kubu devices")
 
         @callback

@@ -4,9 +4,10 @@ from __future__ import annotations
 
 import json
 import logging
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
-from typing import Any, Callable
+from typing import Any
 
 from aiohttp import ClientError, ClientResponseError, ClientSession
 
@@ -119,7 +120,6 @@ class KubuApiClient:
 
     async def async_get_ble_nodes(self) -> list[KubuBleNode]:
         """Fetch BLE nodes from the API."""
-
         LOGGER.info("Fetching BLE nodes from Kubu API")
         data = await self._async_request(
             "GET",
