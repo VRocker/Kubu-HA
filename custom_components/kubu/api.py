@@ -9,7 +9,6 @@ from datetime import UTC, datetime, timedelta
 from typing import Any, Callable
 
 from aiohttp import ClientError, ClientResponseError, ClientSession
-from bleak import _logger
 
 LOGGER = logging.getLogger(__name__)
 
