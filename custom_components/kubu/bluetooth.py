@@ -16,13 +16,11 @@ from homeassistant.components.bluetooth import (
 )
 from homeassistant.core import HomeAssistant, callback
 
-from custom_components.integration_blueprint.const import LOGGER
-
 from .coordinator import KubuCoordinator
 
 _tilt_movable_map: dict[str, bool] = {}
 
-_LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
 
 @dataclass(slots=True)

@@ -11,9 +11,7 @@ from typing import Any, Callable
 from aiohttp import ClientError, ClientResponseError, ClientSession
 from bleak import _logger
 
-from custom_components.integration_blueprint.const import LOGGER
-
-_LOGGER = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
 
 class KubuAuthError(Exception):
