@@ -33,7 +33,7 @@ async def async_setup_entry(
         if not coordinator.data:
             return
         new_entities: list[BinarySensorEntity] = []
-        for node_id, state in coordinator.data.items():
+        for node_id in coordinator.data.keys():
             if node_id in known:
                 continue
             known.add(node_id)
