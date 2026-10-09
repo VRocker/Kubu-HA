@@ -1,17 +1,13 @@
 # Kubu-HA
-A home assistant component to add support for Kubu devices
+A home assistant component to add support for Kubu window and door devices.
 
 # Notes
-This repo is very much WIP and will be added to as new things are added. No code as of yet as it's still in progress!
+This repo is very much WIP and will be added to as new things are added. 
 
 ## Current State
-* Kubu API reverse engineered
-* BLE protocol decrypted and partially reversed
-* PoC C# project created and responding to both advertisements and events
-* Initial Home Assistant component created and talking to the Kubu API (not yet comitted)
-* Wiki page documenting stuff (https://github.com/VRocker/Kubu-HA/wiki/BLE-Protocol)
+This should be working with window and door sensors now, at least with the open/closed locked/unlocked states. The battery estimation is all over the place so this needs looking at. Tamper detection also isn't hooked up yet.
 
-* Initial HA component: <img width="1053" height="357" alt="image" src="https://github.com/user-attachments/assets/1e0338b0-4ea6-40ad-9f5f-040bfaa63368" />
+HA component: <img width="1053" height="357" alt="image" src="https://github.com/user-attachments/assets/1e0338b0-4ea6-40ad-9f5f-040bfaa63368" />
 
 # Based on
 This integration was templated from the [Integration Blueprint](https://github.com/ludeeus/integration_blueprint) repository.
